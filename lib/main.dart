@@ -14,7 +14,7 @@ class TodoApp extends StatelessWidget {
     return MaterialApp(
       title: 'Conestogs GDSC TODO',
       theme: ThemeData(
-        primarySwatch: Colors.yellow,
+        primarySwatch: Colors.indigo,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );

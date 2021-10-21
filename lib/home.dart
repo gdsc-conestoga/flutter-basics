@@ -42,13 +42,29 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget buildTodoItem(TodoItem todoItem) {
-    return ListTile(
-      title: Text(todoItem.title),
-      leading: IconButton(
-        icon: Icon(
-          todoItem.isDone ? Icons.check_box_outline_blank : Icons.check_box,
+    return Dismissible(
+      key: ValueKey(todoItem),
+      direction: DismissDirection.startToEnd,
+      background: Container(
+        color: Colors.red,
+        child: Row(
+          children: const [
+            Padding(
+              padding: EdgeInsets.only(left: 10),
+              child: Icon(Icons.delete),
+            ),
+          ],
         ),
-        onPressed: () => toggleTodoItem(todoItem),
+      ),
+      onDismissed: (dir) => removeTodoItem(todoItem),
+      child: ListTile(
+        title: Text(todoItem.title),
+        leading: IconButton(
+          icon: Icon(
+            todoItem.isDone ? Icons.check_box : Icons.check_box_outline_blank,
+          ),
+          onPressed: () => toggleTodoItem(todoItem),
+        ),
       ),
     );
   }
@@ -59,9 +75,15 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  toggleTodoItem(TodoItem todoItem) {
+  void toggleTodoItem(TodoItem todoItem) {
     setState(() {
       todoItem.isDone = !todoItem.isDone;
+    });
+  }
+
+  void removeTodoItem(TodoItem todoItem) {
+    setState(() {
+      _todoItems.remove(todoItem);
     });
   }
 }
