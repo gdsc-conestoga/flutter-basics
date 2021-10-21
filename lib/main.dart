@@ -12,11 +12,11 @@ class TodoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Conestogs GDSC TODO',
+      title: 'Conestoga GDSC TODO',
       theme: ThemeData(
         primarySwatch: Colors.indigo,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Conestoga GDSC TODO'),
     );
   }
 }
